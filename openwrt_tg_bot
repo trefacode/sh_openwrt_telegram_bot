@@ -1,0 +1,32 @@
+#main
+#!/bin/sh
+
+name_s="openwrt_tg_bot"
+#Reading from uci
+tg_offset=0
+tg_token="" 
+tg_chat_id="" 
+tg_api="https://api.telegram.org"
+std_scripts="std_scripts"
+usr_scripts="usr_scripts"
+json_start_menu=""
+
+source ./$std_scripts/telegram.sh
+source ./$std_scripts/messages.sh
+source ./$std_scripts/json.sh
+source ./$std_scripts/process.sh
+source ./$std_scripts/commands.sh
+source ./$std_scripts/buttons.sh
+source ./$std_scripts/init.sh
+
+main () {
+    init_json_start_menu
+    init_telegram_bot
+    init_search_scripts
+    init_telegram_offset
+    echo $json_start_menu
+    process_check_update
+    exit 0
+}
+
+main
